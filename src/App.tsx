@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import MagicInterface from "./pages/MagicInterface";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/integrations" element={<Index />} />
           <Route path="/predictions" element={<Index />} />
           <Route path="/settings" element={<Index />} />
+          <Route path="/magic-interface" element={<MagicInterface />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,7 +1,8 @@
 
 import React from "react";
-import { BarChart2, Clock, Grid, LineChart, Medal, Settings, Table2, Trophy } from "lucide-react";
+import { BarChart2, Clock, Grid, LineChart, Medal, Settings, Table2, Trophy, Wand2 } from "lucide-react";
 import { sidebarItems } from "../data/mockData";
+import { Link } from "react-router-dom";
 
 const iconMap: Record<string, React.ReactNode> = {
   Trophy: <Trophy className="h-5 w-5 icon-box" />,
@@ -12,6 +13,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Medal: <Medal className="h-5 w-5 icon-box" />,
   BarChart2: <BarChart2 className="h-5 w-5 icon-box" />,
   Settings: <Settings className="h-5 w-5 icon-box" />,
+  Wand2: <Wand2 className="h-5 w-5 icon-box" />,
 };
 
 const Sidebar = () => {
@@ -26,8 +28,9 @@ const Sidebar = () => {
       
       <nav className="flex-grow px-3 py-2">
         {sidebarItems.map((item, index) => (
-          <div
+          <Link
             key={index}
+            to={item.path}
             className={`${item.isActive ? "sidebar-item sidebar-item-active" : "sidebar-item"} mb-1 relative`}
           >
             {iconMap[item.icon]}
@@ -43,8 +46,28 @@ const Sidebar = () => {
                 <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-          </div>
+          </Link>
         ))}
+        
+        {/* Magic Interface Link */}
+        <Link
+          to="/magic-interface"
+          className="sidebar-item mb-1 relative"
+        >
+          {iconMap["Wand2"]}
+          <div>
+            <div className="flex items-center gap-2">
+              Magic Interface
+              <span className="new-badge">NEW</span>
+            </div>
+            <span className="text-xs text-muted-foreground">Visual AI toolkit</span>
+          </div>
+          <div className="ml-auto text-gray-500">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </Link>
       </nav>
       
       <div className="m-3 p-4 bg-accent rounded-lg">
